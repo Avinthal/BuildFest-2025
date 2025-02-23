@@ -96,6 +96,7 @@ def run_cycles(cycles, high_temp, low_temp, heat_duration, cold_duration, vibrat
             for device in devices:
                 try:
                     device.registers.set_thermal_mode(ThermalMode.MANUAL)
+                    device.registers.set_LED_mode(LedMode.GLOBAL_MANUAL)
                     intensity = calculate_thermal_intensity(device, high_temp)
                     device.registers.set_thermal_intensity(intensity)
                     device.registers.set_vibration_mode(VibrationMode.MANUAL if vibration_intensity > 0 else VibrationMode.OFF)
@@ -150,6 +151,7 @@ def run_carpal_tunnel_cycle():
         for device in devices:
             try:
                 device.registers.set_thermal_mode(ThermalMode.MANUAL)
+                device.registers.set_led_mode(LedMode.GLOBAL_MANUAL)
                 intensity = calculate_thermal_intensity(device, 40)
                 device.registers.set_thermal_intensity(intensity)
                 device.registers.set_global_led(255, 0, 0)
@@ -170,6 +172,7 @@ def run_carpal_tunnel_demo_cycle():
     for device in devices:
         try:
             device.registers.set_thermal_mode(ThermalMode.MANUAL)
+            device.registers.set_led_mode(LedMode.GLOBAL_MANUAL)
             device.registers.set_thermal_intensity(-1.0)
             device.registers.set_global_led(255, 0, 0)
             device.registers.set_vibration_mode(VibrationMode.OFF)
@@ -192,6 +195,7 @@ def run_carpal_tunnel_demo_cycle():
         for device in devices:
             try:
                 device.registers.set_thermal_mode(ThermalMode.MANUAL)
+                device.registers.set_led_mode(LedMode.GLOBAL_MANUAL)
                 intensity = calculate_thermal_intensity(device, 40)
                 device.registers.set_thermal_intensity(intensity)
                 device.registers.set_global_led(255, 0, 0)
